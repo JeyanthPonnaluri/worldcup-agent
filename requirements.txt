@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pymongo
+dnspython
+google-genai
+python-dotenv
+requests
+websocket-client
+websockets
+bcrypt
+pyjwt
+beautifulsoup4

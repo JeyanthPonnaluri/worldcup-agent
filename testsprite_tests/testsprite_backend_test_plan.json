@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "get apihealth returns service and database status",
+    "description": "Verify that GET /api/health returns HTTP 200 with correct service and database status when backend and database are healthy."
+  },
+  {
+    "id": "TC002",
+    "title": "get apistadiums returns list of stadiums",
+    "description": "Verify that GET /api/stadiums returns HTTP 200 with an array of available stadium records."
+  },
+  {
+    "id": "TC003",
+    "title": "get apivenuestadiumname returns venue metadata or 404",
+    "description": "Verify that GET /api/venue/{stadium_name} returns HTTP 200 with venue metadata for a valid stadium name and HTTP 404 for an unknown stadium name."
+  },
+  {
+    "id": "TC004",
+    "title": "get apicrowdstadiumname returns live gate wait times or 404",
+    "description": "Verify that GET /api/crowd/{stadium_name} returns HTTP 200 with current gate wait times for a valid stadium and HTTP 404 for an unknown stadium."
+  },
+  {
+    "id": "TC005",
+    "title": "post apicrowdupdate updates crowd wait times or errors",
+    "description": "Verify that POST /api/crowd/update with valid stadium_name, gate_name, and waiting_time returns HTTP 200 confirming update; invalid or missing waiting_time returns HTTP 500; unknown stadium returns HTTP 404."
+  },
+  {
+    "id": "TC006",
+    "title": "post apifeedback records user feedback or returns errors",
+    "description": "Verify that POST /api/feedback with valid payload returns HTTP 200 confirming feedback recorded; malformed payload or invalid scores returns HTTP 422; persistence failure returns HTTP 500."
+  },
+  {
+    "id": "TC007",
+    "title": "post apiitinerary generates optimized itinerary or errors",
+    "description": "Verify that POST /api/itinerary with valid prompt, stadium, crowd_tolerance, and dietary_preferences returns HTTP 200 with optimized itinerary; incomplete or invalid input or Gemini rate-limit/failure returns HTTP 500."
+  },
+  {
+    "id": "TC008",
+    "title": "post authsignup registers user or returns error",
+    "description": "Verify that POST /auth/signup with valid user data including dietary_preferences array returns HTTP 200 confirming account creation; duplicate or invalid payload returns HTTP 400."
+  },
+  {
+    "id": "TC009",
+    "title": "post authlogin authenticates user or returns unauthorized",
+    "description": "Verify that POST /auth/login with valid credentials returns HTTP 200 with JWT token; invalid username or password returns HTTP 401."
+  },
+  {
+    "id": "TC010",
+    "title": "get authprofile retrieves or denies access to user profile",
+    "description": "Verify that GET /auth/profile with valid JWT token returns HTTP 200 with protected profile details; without or with invalid/expired token returns HTTP 401; non-existent user returns HTTP 404."
+  }
+]

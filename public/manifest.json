@@ -1,0 +1,16 @@
+{
+  "short_name": "KhelMitra",
+  "name": "KhelMitra AI",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#07090A",
+  "background_color": "#07090A",
+  "orientation": "portrait"
+}

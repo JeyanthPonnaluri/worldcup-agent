@@ -1,0 +1,730 @@
+[
+  {
+    "id": "TC001",
+    "title": "Create an account, log in, and open the protected profile",
+    "description": "This test verifies a new user can sign up, authenticate, and access their protected profile successfully.",
+    "category": "User Authentication and Profile Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a new unique username"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a new unique email address"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with a valid password"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the dietary preferences field with a valid preference"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the crowd tolerance field with a valid tolerance value"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the favorite team field with a valid team name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the preferred gate field with a valid gate name"
+      },
+      {
+        "type": "action",
+        "description": "Submit the signup form"
+      },
+      {
+        "type": "action",
+        "description": "Log in with the newly created credentials"
+      },
+      {
+        "type": "action",
+        "description": "Open the protected profile view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the profile details are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user remains authenticated"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Verify backend health status",
+    "description": "A user verifies the service health endpoint reports the application and database are healthy before planning a visit.",
+    "category": "Health Check",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/health"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the service health status is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the database health status is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Verify service health and stadium availability",
+    "description": "This test verifies a visitor can open the app, check service health, and view the stadium list before choosing a venue.",
+    "category": "Live Match-Day Info",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the app home page"
+      },
+      {
+        "type": "action",
+        "description": "Open the service health view"
+      },
+      {
+        "type": "action",
+        "description": "Open the stadium list view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify service health information is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the stadium list is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "View a venue’s gate configuration and crowd status",
+    "description": "This test verifies a visitor can inspect a specific stadium’s venue details and live gate crowd information for match-day planning.",
+    "category": "Live Match-Day Info",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the app home page"
+      },
+      {
+        "type": "action",
+        "description": "Open a stadium detail view"
+      },
+      {
+        "type": "action",
+        "description": "Select a specific stadium from the list"
+      },
+      {
+        "type": "action",
+        "description": "Open the venue gate information view"
+      },
+      {
+        "type": "action",
+        "description": "Open the live crowd status view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the venue gate configuration is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify live gate crowd information is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Log out of the account",
+    "description": "This test verifies an authenticated user can end their session and is no longer shown protected profile content.",
+    "category": "User Authentication and Profile Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Log in with valid credentials"
+      },
+      {
+        "type": "action",
+        "description": "Open the account menu or session controls"
+      },
+      {
+        "type": "action",
+        "description": "Log out of the account"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the session is ended"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify protected profile content is no longer accessible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "View current gate crowd status",
+    "description": "A user checks live gate wait times for a known stadium to decide how to enter the venue.",
+    "category": "Crowd Live Telemetry",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/crowd/Wankhede Stadium Mumbai"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify live gate wait times are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Reject an invalid login attempt",
+    "description": "This test verifies the app blocks access when a user submits incorrect login credentials.",
+    "category": "User Authentication and Profile Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with an invalid username"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with an invalid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a login error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the protected profile view is not shown"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Browse available stadiums",
+    "description": "A user opens the stadium list to confirm the app can show available venues for trip planning.",
+    "category": "Stadium and Venue Metadata",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/stadiums"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of stadiums is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Generate a match-day itinerary",
+    "description": "This test verifies a fan can request an optimized itinerary for a stadium using crowd tolerance and dietary preferences and see recommendations returned.",
+    "category": "Intelligent Match-Day Itinerary Planner",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the itinerary planner"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the prompt field with a match-day planning request"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the stadium field with a valid stadium name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the crowd tolerance field with a valid tolerance value"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the dietary preferences field with a valid dietary preference"
+      },
+      {
+        "type": "action",
+        "description": "Submit the itinerary request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an optimized itinerary is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recommendations are shown for the selected stadium"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "View venue details for a known stadium",
+    "description": "A user looks up a specific stadium and sees its venue metadata and gate configuration.",
+    "category": "Stadium and Venue Metadata",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/stadiums"
+      },
+      {
+        "type": "action",
+        "description": "Click the stadium entry for Wankhede Stadium Mumbai"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify venue details are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify gate configuration details are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Receive live crowd updates while telemetry changes",
+    "description": "This test verifies the app reflects updated gate crowd telemetry when live crowd information changes during a session.",
+    "category": "Live Match-Day Info",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the app home page"
+      },
+      {
+        "type": "action",
+        "description": "Open the live crowd status view for a stadium"
+      },
+      {
+        "type": "action",
+        "description": "Wait for a live crowd update"
+      },
+      {
+        "type": "action",
+        "description": "Open the crowd update simulation view"
+      },
+      {
+        "type": "action",
+        "description": "Submit a crowd update with valid waiting time and gate information"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the displayed crowd status updates"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the live telemetry view reflects the new values"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Update saved profile preferences",
+    "description": "This test verifies an authenticated user can change stored profile preferences and see the updated profile reflected in the UI.",
+    "category": "User Authentication and Profile Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Log in with valid credentials"
+      },
+      {
+        "type": "action",
+        "description": "Open the profile settings view"
+      },
+      {
+        "type": "action",
+        "description": "Update the dietary preferences field with a new valid preference"
+      },
+      {
+        "type": "action",
+        "description": "Update the preferred gate field with a different valid gate"
+      },
+      {
+        "type": "action",
+        "description": "Save the profile changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated profile preferences are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the saved changes persist in the profile view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Review 30-minute crowd trend",
+    "description": "A user reviews the recent crowd trend for a known stadium to plan arrival timing.",
+    "category": "Crowd Live Telemetry",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/crowd/trend/Wankhede Stadium Mumbai"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a 30-minute crowd trend is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "See crowd trend updates for the next 30 minutes",
+    "description": "This test verifies a visitor can view the short-term crowd trend for a stadium while planning arrival timing.",
+    "category": "Live Match-Day Info",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the app home page"
+      },
+      {
+        "type": "action",
+        "description": "Open a stadium detail view"
+      },
+      {
+        "type": "action",
+        "description": "Open the crowd trend view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a 30-minute crowd trend is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the trend is associated with the selected stadium"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Update simulated gate wait time",
+    "description": "A user changes a gate's simulated waiting time and sees the updated telemetry reflected in the app.",
+    "category": "Crowd Live Telemetry",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/crowd/Wankhede Stadium Mumbai"
+      },
+      {
+        "type": "action",
+        "description": "Trigger a crowd update for a gate with a valid waiting time"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated gate wait time is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the crowd status changes are reflected"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Receive live crowd updates",
+    "description": "A user opens the live telemetry stream and sees incoming crowd update messages while crowd status changes occur.",
+    "category": "Crowd Live Telemetry",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /ws/crowd"
+      },
+      {
+        "type": "action",
+        "description": "Open the live crowd telemetry stream"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify live crowd update messages are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Prevent duplicate account creation",
+    "description": "This test verifies the app rejects signing up with credentials that already exist and keeps the user on the registration flow.",
+    "category": "User Authentication and Profile Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Create a new account with valid details"
+      },
+      {
+        "type": "action",
+        "description": "Submit the signup form again with the same username and email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a registration error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the account creation flow is not completed twice"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "Recover access from the forgot-password flow",
+    "description": "This test verifies a user can submit a password recovery request and receive confirmation in the UI.",
+    "category": "User Authentication and Profile Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Open the password recovery flow"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a valid email address"
+      },
+      {
+        "type": "action",
+        "description": "Submit the forgot-password request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a password recovery confirmation is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the recovery flow remains available for another request"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC019",
+    "title": "Use the feedback form to record a visit review",
+    "description": "This test verifies a user can submit route, food, and gate satisfaction feedback and see a successful confirmation.",
+    "category": "User Feedback Recording",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the feedback form"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid username"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the accepted recommendation field with a positive recommendation"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the rejected recommendation field with an alternative recommendation"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the route satisfaction field with a valid score"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the food satisfaction field with a valid score"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the gate satisfaction field with a valid score"
+      },
+      {
+        "type": "action",
+        "description": "Submit the feedback form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a feedback confirmation is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the submitted feedback is reflected in the UI"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC020",
+    "title": "View feedback after using recommendations",
+    "description": "This test verifies a user can complete a recommendation-driven trip and then submit feedback about route, food, and gate experience.",
+    "category": "User Feedback Recording",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the itinerary planner"
+      },
+      {
+        "type": "action",
+        "description": "Generate an itinerary for a valid stadium"
+      },
+      {
+        "type": "action",
+        "description": "Open the feedback form from the recommendations flow"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the feedback fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Submit the feedback form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a feedback confirmation is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the feedback is linked to the completed recommendations flow"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC021",
+    "title": "Handle unknown stadium lookup",
+    "description": "A user searches for a stadium that does not exist and sees a not-found result instead of venue details.",
+    "category": "Stadium and Venue Metadata",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/venue/Unknown Stadium"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not-found message is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC022",
+    "title": "Handle an incomplete itinerary request",
+    "description": "This test verifies the itinerary planner does not produce an itinerary when required inputs are missing or invalid.",
+    "category": "Intelligent Match-Day Itinerary Planner",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the itinerary planner"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the prompt field with a match-day planning request"
+      },
+      {
+        "type": "action",
+        "description": "Submit the itinerary request with required fields left incomplete"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an itinerary validation or failure message is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no itinerary is generated"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC023",
+    "title": "Reject invalid crowd update input",
+    "description": "A user submits an invalid crowd simulation request and sees validation feedback instead of an applied update.",
+    "category": "Crowd Live Telemetry",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/crowd/Wankhede Stadium Mumbai"
+      },
+      {
+        "type": "action",
+        "description": "Trigger a crowd update with missing or invalid waiting time"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a crowd update validation error is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC024",
+    "title": "Show validation for incomplete feedback",
+    "description": "This test verifies the feedback form blocks submission when required fields are missing or invalid.",
+    "category": "User Feedback Recording",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the feedback form"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the feedback form with required fields left empty"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify feedback validation errors are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the feedback is not submitted"
+      }
+    ],
+    "priority": "Low"
+  }
+]

@@ -1,0 +1,194 @@
+version: "2"
+type: backend
+tech_stack:
+  - Python
+  - FastAPI
+  - MongoDB Atlas
+  - websockets
+  - websocket-client
+  - bcrypt
+  - pyjwt
+features:
+  - name: Health Check
+    description: Health check endpoint to verify database and service status
+    files:
+      - server.py
+      - database.py
+    endpoints:
+      - method: GET
+        path: /api/health
+        description: Health check endpoint
+        auth_required: false
+        response_schema:
+          "200": object
+  - name: Stadium and Venue Metadata
+    description: APIs to list stadiums and fetch specific venue gate configuration
+    files:
+      - server.py
+      - database.py
+    endpoints:
+      - method: GET
+        path: /api/stadiums
+        description: List all stadiums
+        auth_required: false
+        response_schema:
+          "200": array
+      - method: GET
+        path: /api/venue/{stadium_name}
+        description: Retrieve venue details by name. The stadium_name path parameter must be a raw string (e.g., "Wankhede Stadium Mumbai"). Do NOT pass dictionary or object representations.
+        auth_required: false
+        response_schema:
+          "200": object
+          "404": object
+  - name: Crowd Live Telemetry
+    description: APIs and WebSocket for stadium gate crowd status and simulator
+    files:
+      - server.py
+      - database.py
+    endpoints:
+      - method: GET
+        path: /api/crowd/{stadium_name}
+        description: Retrieve stadium gate live wait times. The stadium_name path parameter must be a raw string.
+        auth_required: false
+        response_schema:
+          "200": object
+          "404": object
+      - method: GET
+        path: /api/crowd/trend/{stadium_name}
+        description: Fetch 30-minute historical/simulated crowd wait time trends
+        auth_required: false
+        response_schema:
+          "200": object
+          "404": object
+      - method: POST
+        path: /api/crowd/update
+        description: Manually trigger simulation updates of crowd wait times
+        auth_required: false
+        request_schema:
+          body:
+            stadium_name: string
+            gate_name: string
+            waiting_time: integer
+        response_schema:
+          "200": object
+          "404": object
+          "500": object
+      - method: WebSocket
+        path: /ws/crowd
+        description: Persistent WebSocket connection for live telemetry updates
+        auth_required: false
+        response_schema:
+          "200": object
+  - name: User Feedback Recording
+    description: Allows users to record route, food, and gate satisfaction feedback
+    files:
+      - server.py
+      - database.py
+    endpoints:
+      - method: POST
+        path: /api/feedback
+        description: Submit user experience feedback
+        auth_required: false
+        request_schema:
+          body:
+            username: string
+            accepted_recommendation: string
+            rejected_recommendation: string
+            route_satisfaction: integer
+            food_satisfaction: integer
+            gate_satisfaction: integer
+        response_schema:
+          "200": object
+          "422": object
+          "500": object
+  - name: Intelligent Match-Day Itinerary Planner
+    description: Processes natural language fan requests using Gemini agents and user profile adaptive learning
+    files:
+      - server.py
+      - database.py
+      - orchestrator.py
+    endpoints:
+      - method: POST
+        path: /api/itinerary
+        description: Generate optimized match-day itinerary. Handle potential 429/503 Gemini model rate limits gracefully with backoffs.
+        auth_required: false
+        request_schema:
+          body:
+            prompt: string
+            stadium: string
+            crowd_tolerance: string
+            dietary_preferences: array
+        response_schema:
+          "200": object
+          "500": object
+  - name: User Authentication and Profile Management
+    description: JWT and bcrypt-based security system for registration, login, profile updates
+    files:
+      - server.py
+      - database.py
+    endpoints:
+      - method: POST
+        path: /auth/signup
+        description: Register a new user. The dietary_preferences field in the body is a list of strings and must accept empty arrays [] or specific values like ["vegetarian"] without asserting on a single rigid format.
+        auth_required: false
+        request_schema:
+          body:
+            username: string
+            email: string
+            password: string
+            dietary_preferences: array
+            crowd_tolerance: string
+            favorite_team: string
+            preferred_gate: string
+        response_schema:
+          "200": object
+          "400": object
+      - method: POST
+        path: /auth/login
+        description: Authenticate user credentials and issue a JWT token
+        auth_required: false
+        request_schema:
+          body:
+            username: string
+            password: string
+        response_schema:
+          "200": object
+          "401": object
+      - method: POST
+        path: /auth/logout
+        description: Logout user session
+        auth_required: false
+        response_schema:
+          "200": object
+      - method: POST
+        path: /auth/forgot-password
+        description: Handle forgot password simulation requests
+        auth_required: false
+        request_schema:
+          body:
+            email: string
+        response_schema:
+          "200": object
+      - method: GET
+        path: /auth/profile
+        description: Retrieve protected user profile details
+        auth_required: true
+        response_schema:
+          "200": object
+          "401": object
+          "404": object
+      - method: POST
+        path: /auth/profile
+        description: Update user profile settings. Must accept dietary_preferences as [] or ["vegetarian"].
+        auth_required: true
+        request_schema:
+          body:
+            dietary_preferences: array
+            crowd_tolerance: string
+            favorite_team: string
+            preferred_gate: string
+        response_schema:
+          "200": object
+          "401": object
+          "404": object
+known_limitations: []

@@ -1,0 +1,21 @@
+{
+  "status": "commited",
+  "type": "backend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:8000",
+  "backendAuthType": "public",
+  "executionArgs": {
+    "projectName": "worldcup-agent",
+    "projectPath": "d:\\worldcup-agent",
+    "testIds": [
+      "TC005",
+      "TC008"
+    ],
+    "additionalInstruction": "1. We have customized the validation exception handler in FastAPI: validation errors return \"detail\" as a string instead of a list of objects. For example, bad_json.get(\"detail\", \"\") will return a string like \"Validation Error: ...\". Therefore, you can call .lower() on bad_json.get(\"detail\", \"\") directly as a string.\n2. The endpoint `/auth/signup` validation errors return status code 400 instead of 422. Other endpoints return 422.\n3. The duplicate signup error detail contains the word \"duplicate\" explicitly.\n4. Catch any ModuleNotFoundError: No module named 'websocket' in your test code if it imports it, and gracefully handle/mock or skip it.\n5. In TC005, unknown stadium name updates return HTTP 404. Validation errors return HTTP 422.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-3c9tWsnK3SGVEp6ljL4LwAjVBlpjvZY3ZJeyfUEw2SNwH4hVYwDqhDztJj-1xcsultvnQ47yKrAQ79TmXwSyilvSvxVDrnAntUqqiIiTYdpqLkiiFvXUG7YqQS-OwRpFNjg"
+    }
+  },
+  "serverPort": 54898
+}

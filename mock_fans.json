@@ -1,0 +1,13 @@
+{
+  "Alex": {
+    "username": "Alex",
+    "dietary_preferences": "vegetarian",
+    "crowd_tolerance": "medium",
+    "preferred_transport": "none",
+    "favorite_team": "IND",
+    "previous_routes": [],
+    "previous_stadiums": [
+      "Wankhede Stadium Mumbai"
+    ]
+  }
+}

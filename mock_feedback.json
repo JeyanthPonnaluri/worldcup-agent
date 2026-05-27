@@ -1,0 +1,218 @@
+[
+  {
+    "username": "Alex",
+    "accepted_recommendation": "VIP Gate",
+    "rejected_recommendation": "Gate A",
+    "route_satisfaction": 5,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T09:00:00"
+  },
+  {
+    "username": "Alex",
+    "accepted_recommendation": "VIP Gate",
+    "rejected_recommendation": "Gate B",
+    "route_satisfaction": 4,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 4,
+    "timestamp": "2026-05-26T09:10:00"
+  },
+  {
+    "username": "Alex",
+    "accepted_recommendation": "VIP Gate",
+    "rejected_recommendation": "Gate A",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T04:35:02.524956"
+  },
+  {
+    "username": "Alex",
+    "accepted_recommendation": "VIP Gate",
+    "rejected_recommendation": "Gate A",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T04:36:29.472049"
+  },
+  {
+    "username": "Alex",
+    "accepted_recommendation": "VIP Gate",
+    "rejected_recommendation": "Gate A",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T04:37:45.972181"
+  },
+  {
+    "username": "Alex",
+    "accepted_recommendation": "VIP Gate",
+    "rejected_recommendation": "Gate A",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T08:27:54.959293"
+  },
+  {
+    "username": "testuser_b76a008a",
+    "accepted_recommendation": "Try the vegetarian pasta",
+    "rejected_recommendation": "Avoid the spicy wings",
+    "route_satisfaction": 4,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T08:50:53.803094"
+  },
+  {
+    "username": "testuser_feedback",
+    "accepted_recommendation": "Best route via Gate A",
+    "rejected_recommendation": "Avoid Gate C",
+    "route_satisfaction": 4,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T08:57:09.730143"
+  },
+  {
+    "username": "testuser_feedback",
+    "accepted_recommendation": "",
+    "rejected_recommendation": "",
+    "route_satisfaction": 5,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T08:57:10.853623"
+  },
+  {
+    "username": "testuser_feedback",
+    "accepted_recommendation": "Best route via Gate A",
+    "rejected_recommendation": "Avoid Gate C",
+    "route_satisfaction": 4,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T08:57:27.868447"
+  },
+  {
+    "username": "testuser_feedback",
+    "accepted_recommendation": "",
+    "rejected_recommendation": "",
+    "route_satisfaction": 3,
+    "food_satisfaction": 3,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T08:57:29.019397"
+  },
+  {
+    "username": "testuser_feedback",
+    "accepted_recommendation": "Best route via Gate A",
+    "rejected_recommendation": "Avoid Gate C",
+    "route_satisfaction": 4,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T08:57:56.672883"
+  },
+  {
+    "username": "testuser_feedback",
+    "accepted_recommendation": "Good route",
+    "rejected_recommendation": "Bad route",
+    "route_satisfaction": 6,
+    "food_satisfaction": 0,
+    "gate_satisfaction": -1,
+    "timestamp": "2026-05-26T08:57:59.156364"
+  },
+  {
+    "username": "testuser123",
+    "accepted_recommendation": "Best route through gate 3",
+    "rejected_recommendation": "Avoid gate 7 due to crowd",
+    "route_satisfaction": 4,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T09:00:12.115498"
+  },
+  {
+    "username": "Alex",
+    "accepted_recommendation": "",
+    "rejected_recommendation": "",
+    "route_satisfaction": 5,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T09:00:13.243928"
+  },
+  {
+    "username": "testuser123",
+    "accepted_recommendation": "Try the recommended gate C",
+    "rejected_recommendation": "Avoid gate A",
+    "route_satisfaction": 4,
+    "food_satisfaction": 5,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T13:00:46.056307"
+  },
+  {
+    "username": "trigger_500",
+    "accepted_recommendation": "Try the recommended gate C",
+    "rejected_recommendation": "Avoid gate A",
+    "route_satisfaction": 3,
+    "food_satisfaction": 3,
+    "gate_satisfaction": 3,
+    "timestamp": "2026-05-26T13:00:48.617493"
+  },
+  {
+    "username": "feed_1779802352140",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T13:32:35.073813"
+  },
+  {
+    "username": "feed_1779803345418",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T13:49:08.685105"
+  },
+  {
+    "username": "feed_1779804038670",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T14:00:43.674295"
+  },
+  {
+    "username": "feed_1779804764988",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-26T14:12:47.849624"
+  },
+  {
+    "username": "feed_1779840441278",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-27T00:07:33.200903"
+  },
+  {
+    "username": "feed_1779840461091",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-27T00:07:44.667395"
+  },
+  {
+    "username": "feed_1779840971607",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-27T00:16:15.258574"
+  }
+]
