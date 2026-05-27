@@ -1,0 +1,79 @@
+name: CI/CD Pipeline - AWS Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to AWS EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            # Lowercase the repository name for Docker image matching
+            IMAGE_PATH=$(echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')
+            
+            echo "Stopping existing container..."
+            docker stop worldcup-agent || true
+            docker rm worldcup-agent || true
+            
+            echo "Pulling latest Docker image from GHCR..."
+            docker pull $IMAGE_PATH:latest
+            
+            echo "Starting new container on port 80..."
+            # Assumes environment secrets are configured in /home/ubuntu/.env on EC2
+            docker run -d \
+              --name worldcup-agent \
+              -p 80:80 \
+              --restart always \
+              --env-file /home/ubuntu/.env \
+              $IMAGE_PATH:latest
+            
+            echo "Pruning unused Docker assets..."
+            docker image prune -f
