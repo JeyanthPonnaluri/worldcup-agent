@@ -119,18 +119,23 @@ async def validation_exception_handler(request, exc):
     )
 
 
-# Enable CORS for frontend integration
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=config.CORS_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 from fastapi import Request
 import time
+import asyncio
 from collections import defaultdict
+
+# Request Timeout Configuration: 30 seconds
+REQUEST_TIMEOUT_LIMIT = 30.0
+
+@app.middleware("http")
+async def timeout_middleware(request: Request, call_next):
+    try:
+        return await asyncio.wait_for(call_next(request), timeout=REQUEST_TIMEOUT_LIMIT)
+    except asyncio.TimeoutError:
+        return JSONResponse(
+            status_code=504,
+            content={"detail": "Request processing timed out."}
+        )
 
 # Rate Limiter Configuration: 100 requests per minute per IP
 RATE_LIMIT_REQUESTS = 100
@@ -139,7 +144,14 @@ ip_request_history = defaultdict(list)
 
 @app.middleware("http")
 async def rate_limiting_middleware(request: Request, call_next):
-    client_ip = request.client.host if request.client else "127.0.0.1"
+    # Check headers if behind Nginx reverse proxy
+    client_ip = request.headers.get("x-real-ip") or request.headers.get("x-forwarded-for")
+    if client_ip:
+        # X-Forwarded-For can contain multiple IPs, pick the first one (original client)
+        client_ip = client_ip.split(",")[0].strip()
+    else:
+        client_ip = request.client.host if request.client else "127.0.0.1"
+        
     now = time.time()
     
     # Prune expired request history
@@ -154,20 +166,15 @@ async def rate_limiting_middleware(request: Request, call_next):
     ip_request_history[client_ip].append(now)
     return await call_next(request)
 
-import asyncio
-
-# Request Timeout Configuration: 30 seconds
-REQUEST_TIMEOUT_LIMIT = 30.0
-
-@app.middleware("http")
-async def timeout_middleware(request: Request, call_next):
-    try:
-        return await asyncio.wait_for(call_next(request), timeout=REQUEST_TIMEOUT_LIMIT)
-    except asyncio.TimeoutError:
-        return JSONResponse(
-            status_code=504,
-            content={"detail": "Request processing timed out."}
-        )
+# Enable CORS for frontend integration. Register last so it acts as outermost middleware,
+# applying CORS headers even to responses returned directly by other middlewares (429, 504).
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=config.CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Initialize Orchestrator
 orchestrator = MatchDayOrchestrator()
