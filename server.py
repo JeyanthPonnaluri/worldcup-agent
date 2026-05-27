@@ -122,11 +122,52 @@ async def validation_exception_handler(request, exc):
 # Enable CORS for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=config.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+from fastapi import Request
+import time
+from collections import defaultdict
+
+# Rate Limiter Configuration: 100 requests per minute per IP
+RATE_LIMIT_REQUESTS = 100
+RATE_LIMIT_WINDOW = 60 # seconds
+ip_request_history = defaultdict(list)
+
+@app.middleware("http")
+async def rate_limiting_middleware(request: Request, call_next):
+    client_ip = request.client.host if request.client else "127.0.0.1"
+    now = time.time()
+    
+    # Prune expired request history
+    ip_request_history[client_ip] = [t for t in ip_request_history[client_ip] if now - t < RATE_LIMIT_WINDOW]
+    
+    if len(ip_request_history[client_ip]) >= RATE_LIMIT_REQUESTS:
+        return JSONResponse(
+            status_code=429,
+            content={"detail": "Too many requests. Please try again later."}
+        )
+        
+    ip_request_history[client_ip].append(now)
+    return await call_next(request)
+
+import asyncio
+
+# Request Timeout Configuration: 30 seconds
+REQUEST_TIMEOUT_LIMIT = 30.0
+
+@app.middleware("http")
+async def timeout_middleware(request: Request, call_next):
+    try:
+        return await asyncio.wait_for(call_next(request), timeout=REQUEST_TIMEOUT_LIMIT)
+    except asyncio.TimeoutError:
+        return JSONResponse(
+            status_code=504,
+            content={"detail": "Request processing timed out."}
+        )
 
 # Initialize Orchestrator
 orchestrator = MatchDayOrchestrator()

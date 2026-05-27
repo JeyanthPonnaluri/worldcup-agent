@@ -1214,5 +1214,101 @@
     "visited_stadiums": [],
     "previous_routes": [],
     "created_at": "2026-05-27T00:16:22.866849"
+  },
+  "cards_1779866022345": {
+    "username": "cards_1779866022345",
+    "email": "cards_1779866022345@example.com",
+    "hashed_password": "$2b$12$Sq4D538qwscLgDA1Jsi7WuyFezpv0icNjENYPutEWnOdW3Ngcn4jq",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:13:49.429413"
+  },
+  "venue_1779866066724": {
+    "username": "venue_1779866066724",
+    "email": "venue_1779866066724@example.com",
+    "hashed_password": "$2b$12$rpEbfJJtJ/BlYlSvBo9cCuNLx/5VyByaoO55X7jRn9qYIpp3Klkyu",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:14:30.532420"
+  },
+  "sign_1779866096779": {
+    "username": "sign_1779866096779",
+    "email": "sign_1779866096779@example.com",
+    "hashed_password": "$2b$12$sOFMcuaS3RtrW7ZhoIZ20.vxudr3Y8HllRVs05dot02FoZdHudbHm",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:15:00.905667"
+  },
+  "dup_1779866104668": {
+    "username": "dup_1779866104668",
+    "email": "dup_1779866104668@example.com",
+    "hashed_password": "$2b$12$QK/DvRWJfrDl35zLmmWYuOe8wyHSCl5vKsUdP.lHgWfTFPQDO6v5W",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:15:10.266333"
+  },
+  "login_1779866116436": {
+    "username": "login_1779866116436",
+    "email": "login_1779866116436@example.com",
+    "hashed_password": "$2b$12$T4NbsYOcZGyTmCyrzIO8I.zWC6TtAWjEyvVYWKtiGoPBAmrbBi9kW",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:15:20.748317"
+  },
+  "feed_1779866127096": {
+    "username": "feed_1779866127096",
+    "email": "feed_1779866127096@example.com",
+    "hashed_password": "$2b$12$XhHS9IHzvRH.OqmQoBJLV.q8ZcdG1Rg2asKUtxps4RNRUbMjrTC0O",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:15:36.250669"
+  },
+  "telemetry_1779866164775": {
+    "username": "telemetry_1779866164775",
+    "email": "telemetry_1779866164775@example.com",
+    "hashed_password": "$2b$12$pOR.saB1CX//gP1azemQqe9YSBpJTjxnRaxqrOv64kjxZ95C7uQWu",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:16:09.832319"
+  },
+  "logout_1779866188654": {
+    "username": "logout_1779866188654",
+    "email": "logout_1779866188654@example.com",
+    "hashed_password": "$2b$12$0mWzBf8i7359ZeBeK5DPKeBFIZuezPgAUw9gaEhfuBUg9tjR1JpDm",
+    "dietary_preferences": [],
+    "crowd_tolerance": "medium",
+    "favorite_team": "",
+    "preferred_gate": "",
+    "visited_stadiums": [],
+    "previous_routes": [],
+    "created_at": "2026-05-27T07:16:33.786532"
   }
 }

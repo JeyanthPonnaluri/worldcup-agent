@@ -4,10 +4,25 @@ import json
 import re
 import math
 import collections
+import time
+import random
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from pydantic import BaseModel
+
+def retry_gemini_call(func, *args, **kwargs):
+    max_retries = 3
+    base_delay = 1.0
+    for attempt in range(max_retries):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            if attempt == max_retries - 1:
+                raise e
+            delay = base_delay * (2 ** attempt) + random.uniform(0, 0.5)
+            logger.warning(f"[RETRY_ENGINE] Gemini call failed: {e}. Retrying in {delay:.2f}s (attempt {attempt + 1}/{max_retries})...")
+            time.sleep(delay)
 
 # Import existing tools directly
 from tools.routing import calculate_route
@@ -294,7 +309,8 @@ class PlanningAgent:
         )
 
         try:
-            response = self.client.models.generate_content(
+            response = retry_gemini_call(
+                self.client.models.generate_content,
                 model='gemini-2.5-flash',
                 contents=planning_prompt,
                 config=types.GenerateContentConfig(
@@ -671,7 +687,8 @@ class CrowdIntelligenceAgent:
         )
 
         try:
-            response = self.client.models.generate_content(
+            response = retry_gemini_call(
+                self.client.models.generate_content,
                 model='gemini-2.5-flash',
                 contents=user_prompt,
                 config=types.GenerateContentConfig(
@@ -756,7 +773,8 @@ class RoutePlanningAgent:
         )
 
         try:
-            response = self.client.models.generate_content(
+            response = retry_gemini_call(
+                self.client.models.generate_content,
                 model='gemini-2.5-flash',
                 contents=user_prompt,
                 config=types.GenerateContentConfig(
@@ -838,7 +856,8 @@ class FoodExperienceAgent:
         )
 
         try:
-            response = self.client.models.generate_content(
+            response = retry_gemini_call(
+                self.client.models.generate_content,
                 model='gemini-2.5-flash',
                 contents=user_prompt,
                 config=types.GenerateContentConfig(
@@ -922,7 +941,8 @@ class SafetyAgent:
         )
 
         try:
-            response = self.client.models.generate_content(
+            response = retry_gemini_call(
+                self.client.models.generate_content,
                 model='gemini-2.5-flash',
                 contents=user_prompt,
                 config=types.GenerateContentConfig(
@@ -1022,7 +1042,8 @@ class KhelMitraOrchestrator:
         if self.client:
             try:
                 # 2. Structured entity extraction
-                response = self.client.models.generate_content(
+                response = retry_gemini_call(
+                    self.client.models.generate_content,
                     model='gemini-2.5-flash',
                     contents=extraction_prompt,
                     config=types.GenerateContentConfig(
@@ -1182,7 +1203,8 @@ class KhelMitraOrchestrator:
             confidence = 90 if chunks else 40
             if self.client:
                 try:
-                    response = self.client.models.generate_content(
+                    response = retry_gemini_call(
+                        self.client.models.generate_content,
                         model='gemini-2.5-flash',
                         contents=rag_prompt
                     )
@@ -1313,7 +1335,8 @@ class KhelMitraOrchestrator:
         final_itinerary_text = ""
         if self.client:
             try:
-                synthesis_response = self.client.models.generate_content(
+                synthesis_response = retry_gemini_call(
+                    self.client.models.generate_content,
                     model='gemini-2.5-flash',
                     contents=synthesis_prompt
                 )

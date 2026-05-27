@@ -214,5 +214,14 @@
     "food_satisfaction": 4,
     "gate_satisfaction": 5,
     "timestamp": "2026-05-27T00:16:15.258574"
+  },
+  {
+    "username": "feed_1779866127096",
+    "accepted_recommendation": "Route via Gate A and Wankhede Concessions",
+    "rejected_recommendation": "Pre-ordering Gujarati Dhokla House",
+    "route_satisfaction": 5,
+    "food_satisfaction": 4,
+    "gate_satisfaction": 5,
+    "timestamp": "2026-05-27T07:15:54.464488"
   }
 ]
