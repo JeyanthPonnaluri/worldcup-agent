@@ -472,9 +472,17 @@ export default function App() {
 
   // Connect to WebSocket for real-time reactive crowd telemetry updates
   useEffect(() => {
-    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const host = window.location.host;
-    const wsUrl = `${protocol}//${host}/ws/crowd?stadium=${encodeURIComponent(stadium)}`;
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
+    let wsUrl;
+    if (BACKEND_URL) {
+      const cleanHost = BACKEND_URL.replace(/^https?:\/\//, "");
+      const protocol = BACKEND_URL.startsWith("https") ? "wss:" : "ws:";
+      wsUrl = `${protocol}//${cleanHost}/ws/crowd?stadium=${encodeURIComponent(stadium)}`;
+    } else {
+      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+      const host = window.location.host;
+      wsUrl = `${protocol}//${host}/ws/crowd?stadium=${encodeURIComponent(stadium)}`;
+    }
     
     console.log("Connecting to crowd telemetry WebSocket:", wsUrl);
     const ws = new WebSocket(wsUrl);

@@ -289,6 +289,13 @@ def health_check():
         "database_name": config.DB_NAME
     }
 
+@app.get("/api/config")
+def get_config():
+    import os
+    return {
+        "google_maps_api_key": os.getenv("GOOGLE_MAPS_API_KEY", "")
+    }
+
 @app.get("/api/stadiums")
 def list_stadiums():
     if database.db_available:

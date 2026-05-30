@@ -46,3 +46,47 @@ Once all services are running, navigate to `http://localhost:5173/` in your brow
 - **Operations Telemetry Simulator:** Adjust wait times manually on the Stats page to broadcast queue wait times dynamically to all active subscribers.
 - **Agent Chat & Streaming Logs:** Ask KhelMitra AI questions about match-day plans, transit routes, or local concessions (e.g. *Vada Pav* in Mumbai or *Biryani* in Hyderabad) and watch the agent's structured reasoning logs stream live in the chat.
 - **Premium Alexandria Design:** Modern, responsive dark-mode editorial layout built using Noto Serif typography and pulsing interactive overlays.
+
+---
+
+## Firebase & Cloud Run Deployment
+
+To deploy KhelMitra AI to production using Google Firebase (Hosting) and Google Cloud Run (Backend), follow these steps:
+
+### 1. Build the Frontend Production Assets
+Compile the React code to static assets inside the `dist/` directory:
+```bash
+npm run build
+```
+
+### 2. Deploy the Python Backend on Google Cloud Run
+Since Firebase Hosting only hosts static files, deploy the single container (which runs the FastAPI backend and reverse-proxies through Nginx) on Google Cloud Run:
+```bash
+# Set your active GCP/Firebase Project ID
+gcloud config set project YOUR_PROJECT_ID
+
+# Build and submit the container to Google Container Registry
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/khelmitra-backend
+
+# Deploy the container to Cloud Run (automatically map to standard port 80/8080)
+gcloud run deploy khelmitra-backend \
+  --image gcr.io/YOUR_PROJECT_ID/khelmitra-backend \
+  --platform managed \
+  --allow-unauthenticated \
+  --region us-central1
+```
+
+### 3. Deploy the Static Frontend on Firebase Hosting
+Deploy the compiled static frontend files and connect them to the Cloud Run backend using path rewrites configured in `firebase.json`:
+```bash
+# Log in to your Google Account
+npx firebase-tools login
+
+# Add your Firebase project to the workspace configuration
+npx firebase-tools use --add YOUR_PROJECT_ID
+
+# Deploy only the static hosting configuration
+npx firebase-tools deploy --only hosting
+```
+Once deployed, Firebase Hosting will serve the static React frontend from `dist/` and rewrite `/api/**` and `/ws/**` requests to your Google Cloud Run FastAPI container.
+

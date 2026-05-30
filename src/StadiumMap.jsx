@@ -51,9 +51,40 @@ const mapContainerStyle = {
   minHeight: "400px"
 };
 
-export default function StadiumMap({ stadium, gateTimes: externalGateTimes }) {
-  const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+export default function StadiumMap({ stadium, gateTimes }) {
+  const [apiKey, setApiKey] = React.useState(import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "");
+  const [loading, setLoading] = React.useState(!apiKey);
 
+  React.useEffect(() => {
+    if (!apiKey) {
+      fetch("/api/config")
+        .then(res => res.json())
+        .then(data => {
+          if (data.google_maps_api_key) {
+            setApiKey(data.google_maps_api_key);
+          }
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("[STADIUM_MAP] Failed to fetch Google Maps API key from backend:", err);
+          setLoading(false);
+        });
+    }
+  }, [apiKey]);
+
+  if (loading) {
+    return (
+      <div className="w-full h-[400px] flex flex-col items-center justify-center bg-[#090d16] text-[#38bdf8] p-4 text-center rounded-xl border border-[#1e293b]">
+        <span className="material-symbols-outlined text-4xl mb-2 animate-spin">sync</span>
+        <p className="font-label text-xs uppercase tracking-widest text-[#94a3b8] mt-2">Loading Map Configuration...</p>
+      </div>
+    );
+  }
+
+  return <StadiumMapInner stadium={stadium} gateTimes={gateTimes} googleMapsApiKey={apiKey} />;
+}
+
+function StadiumMapInner({ stadium, gateTimes: externalGateTimes, googleMapsApiKey }) {
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: googleMapsApiKey || ""
