@@ -1,10 +1,21 @@
-[Wankhede Stadium Transit]
-- Local Train: Churchgate Station (Western Line) is 200 meters away. Chhatrapati Shivaji Maharaj Terminus (CSMT) is 2 km away.
-- Bus: BEST bus routes to Marine Drive or Churchgate.
-- Taxis: Prepaid taxi stand at Churchgate station.
+[Wankhede Stadium Mumbai Transit]
+- Western Line Local Train: Churchgate Station is located just 200 meters from the stadium (a 3-minute walk). This is the fastest route for fans coming from North Mumbai.
+- Central/Harbour Line Train: Chhatrapati Shivaji Maharaj Terminus (CSMT) is 2 km away (a 10-minute taxi ride or 25-minute walk via Marine Lines).
+- Rideshare & Taxis: Drop-off zone is restricted to the Marine Drive flyover corner or Churchgate Station road. Prepaid taxi stands are active outside Churchgate.
 
-[Narendra Modi Stadium Transit]
-- Metro: Take Ahmedabad Metro Blue Line to Sabarmati Metro Station. Walk 500 meters from the station to the gate entrances.
+[Narendra Modi Stadium Ahmedabad Transit]
+- Metro: Take the Ahmedabad Metro North-South Corridor (Red Line) directly to the Sabarmati Metro Station or Motera Stadium Metro Station. The Motera Station is a 500-meter walk from the main Gate 1 entry. Metro services are extended until 1:00 AM on match days.
+- BRTS Bus: Ahmedabad Janmarg BRTS buses run frequent services to the Motera Stadium BRTS stop.
 
-[M Chinnaswamy Stadium Transit]
-- Metro: Take Namma Metro Purple Line to Cubbon Park Metro Station, located directly opposite the stadium gate.
+[M Chinnaswamy Stadium Bengaluru Transit]
+- Metro: Take the Namma Metro Purple Line directly to Cubbon Park Metro Station (located opposite Gate 1) or MG Road Metro Station (located 300 meters from Gate 12). Extra trains run at 5-minute intervals after the match ends, with ticketing extended until 12:30 AM.
+- City Bus: BMTC runs dedicated "Match Special" buses from major hubs (Majestic, Silk Board, Kadugodi) to the Chinnaswamy perimeter.
+
+[Rajiv Gandhi International Stadium Hyderabad Transit]
+- Metro: Take the Hyderabad Metro Corridor III (Blue Line) to Uppal Metro Station or Stadium Metro Station. The Stadium Metro Station is located just 400 meters from the East Gate of the venue. Train frequencies are increased on match days.
+- RTC Buses: TSRTC runs special match-day buses connecting Uppal to Secunderabad, Koti, and Gachibowli.
+
+[Arun Jaitley Stadium Delhi Transit]
+- Metro: Take the Delhi Metro Violet Line directly to Delhi Gate Metro Station. Exit 3 and Exit 4 lead directly to the stadium boundary (100 meters walk). Alternatively, ITO Metro Station (Violet Line) is 800 meters away.
+- Indian Railways: New Delhi Railway Station (NDLS) is 3 km away. Pragati Maidan is the closest regional train crossing.
+- Auto/Rideshare: Rideshare drop-off is restricted to Bahadur Shah Zafar Marg. Dedicated auto-rickshaw bays are set up near the Ambedkar Stadium grounds.
